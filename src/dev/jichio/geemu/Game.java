@@ -1,6 +1,7 @@
 package dev.jichio.geemu;
 
 import dev.jichio.geemu.display.Display;
+import dev.jichio.geemu.gfx.Assets;
 import dev.jichio.geemu.gfx.ImageLoader;
 import dev.jichio.geemu.gfx.SpriteSheet;
 
@@ -39,9 +40,7 @@ public class Game implements Runnable {
 
     private void init(){
         display = new Display(title, width, height);
-        testImage = ImageLoader.loadImage("/textures/test.png");
-        sheet = new SpriteSheet(testImage);
-
+        Assets.init();
         gameState = new GameState();
     }
 
@@ -70,7 +69,7 @@ public class Game implements Runnable {
 
         if (State.getState() != null)
             State.getState().render(g);
-        g.drawImage(sheet.crop(0, 0, 144, 144), x, 10, null);
+        g.drawImage(Assets.player, x, 10, null);
 
 
         //Закончили
