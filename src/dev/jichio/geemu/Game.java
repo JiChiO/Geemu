@@ -2,13 +2,11 @@ package dev.jichio.geemu;
 
 import dev.jichio.geemu.display.Display;
 import dev.jichio.geemu.gfx.Assets;
-import dev.jichio.geemu.gfx.ImageLoader;
-import dev.jichio.geemu.gfx.SpriteSheet;
+import dev.jichio.geemu.states.GameState;
+import dev.jichio.geemu.states.State;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.nio.Buffer;
 
 
 public class Game implements Runnable {
@@ -26,9 +24,6 @@ public class Game implements Runnable {
     //Структура игры (меню, настройки etc...)
     private State gameState;
 
-
-    private BufferedImage testImage;
-    private SpriteSheet sheet;
 
     public Game(String title, int width, int height){
         this.width = width;
