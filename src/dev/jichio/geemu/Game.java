@@ -38,8 +38,8 @@ public class Game implements Runnable {
     private void init(){
         display = new Display(title, width, height);
         Assets.init();
-        gameState = new GameState();
-        menuState = new MenuState();
+        gameState = new GameState(this);
+        menuState = new MenuState(this);
         State.setState(gameState);
     }
 

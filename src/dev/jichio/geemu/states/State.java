@@ -1,6 +1,8 @@
 package dev.jichio.geemu.states;
 
 
+import dev.jichio.geemu.Game;
+
 import java.awt.*;
 
 public abstract class State {
@@ -13,6 +15,12 @@ public abstract class State {
 
     public static State getState(){
         return currentState;
+    }
+
+    protected Game game;
+
+    public State (Game game){
+        this.game = game;
     }
 
     public abstract void tick();
