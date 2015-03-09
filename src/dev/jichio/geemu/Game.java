@@ -3,6 +3,7 @@ package dev.jichio.geemu;
 import dev.jichio.geemu.display.Display;
 import dev.jichio.geemu.gfx.Assets;
 import dev.jichio.geemu.states.GameState;
+import dev.jichio.geemu.states.MenuState;
 import dev.jichio.geemu.states.State;
 
 import java.awt.*;
@@ -23,6 +24,7 @@ public class Game implements Runnable {
 
     //Структура игры (меню, настройки etc...)
     private State gameState;
+    private State menuState;
 
 
     public Game(String title, int width, int height){
@@ -37,6 +39,7 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         Assets.init();
         gameState = new GameState();
+        menuState = new MenuState();
         State.setState(gameState);
     }
 
