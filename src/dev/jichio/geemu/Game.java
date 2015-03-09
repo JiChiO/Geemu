@@ -2,6 +2,7 @@ package dev.jichio.geemu;
 
 import dev.jichio.geemu.display.Display;
 import dev.jichio.geemu.gfx.Assets;
+import dev.jichio.geemu.input.KeyManager;
 import dev.jichio.geemu.states.GameState;
 import dev.jichio.geemu.states.MenuState;
 import dev.jichio.geemu.states.State;
@@ -26,17 +27,22 @@ public class Game implements Runnable {
     private State gameState;
     private State menuState;
 
+    //Ввод
+    private KeyManager keyManager;
+
 
     public Game(String title, int width, int height){
         this.width = width;
         this.height = height;
         this.title = title;
+        keyManager = new KeyManager();
 
 
     }
 
     private void init(){
         display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
         Assets.init();
         gameState = new GameState(this);
         menuState = new MenuState(this);
@@ -44,6 +50,8 @@ public class Game implements Runnable {
     }
 
     private void tick(){
+        keyManager.tick();
+
         if (State.getState() != null)
             State.getState().tick();
     }
@@ -105,6 +113,10 @@ public class Game implements Runnable {
         }
 
         stop();
+    }
+
+    public KeyManager getKeyManager(){
+        return keyManager;
     }
 
     public synchronized void start(){
