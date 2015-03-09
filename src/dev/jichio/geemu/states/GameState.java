@@ -12,7 +12,7 @@ public class GameState extends State {
     private Player player;
 
     public GameState(){
-        player = new Player(100, 100);
+        player = new Player(500, 300);
     }
 
     @Override
@@ -22,6 +22,7 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(Assets.room, 0, 0, null);
         player.render(g);
     }
 }
