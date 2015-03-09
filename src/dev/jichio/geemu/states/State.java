@@ -1,4 +1,4 @@
-package dev.jichio.geemu;
+package dev.jichio.geemu.states;
 
 
 import java.awt.*;

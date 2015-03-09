@@ -1,7 +1,8 @@
-package dev.jichio.geemu;
+package dev.jichio.geemu.states;
 
 
 import dev.jichio.geemu.gfx.Assets;
+import dev.jichio.geemu.states.State;
 
 import java.awt.Graphics;
 
