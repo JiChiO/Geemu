@@ -37,13 +37,12 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         Assets.init();
         gameState = new GameState();
+        State.setState(gameState);
     }
 
     private void tick(){
         if (State.getState() != null)
             State.getState().tick();
-        x += 1;
-        //эту строчку стереть, когда надоест играться.
     }
 
     int x = 0;
@@ -64,7 +63,6 @@ public class Game implements Runnable {
 
         if (State.getState() != null)
             State.getState().render(g);
-        g.drawImage(Assets.player, x, 10, null);
 
 
         //Закончили
