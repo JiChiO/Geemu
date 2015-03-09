@@ -10,18 +10,22 @@ public class Assets {
 
 
 
-    public static BufferedImage player;
+    public static BufferedImage player, room;
 
     public static void init(){
+        //Присваиваем атрибуту player парядковый номер спрайтшита из списка
         BufferedImage b [] = ArrayCrop("/textures/GGs", "png");
         //Присваиваем атрибуту player парядковый номер спрайтшита из списка
         player = b[1];
+
+        b = ArrayCrop("/textures/MainRoom", "png");
+        room = b[0];
     }
     //Рабивеам спрайты на массивы
     public static BufferedImage[] ArrayCrop(String s, String res){
         //Загружаем картинку в формате s=имя + res=расширение
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(s + "." + res));
-        //Загружаем размеры нарезки и общее спрайтов из текстового файла
+        //Загружаем размеры нарезки и общее кол-во спрайтов из текстового файла
         String q[] = TextLoader.loadText(s + ".txt");
         //Создаем список спрайтов
         List<BufferedImage> list = new ArrayList<BufferedImage>();
@@ -29,7 +33,7 @@ public class Assets {
         int charwidth = Integer.parseInt(q[0]);
         int charheight = Integer.parseInt(q[1]);
         int charcount = Integer.parseInt(q[2]);
-        //Заполняем масив изображенями делая обходя по строкам
+        //Заполняем масив изображенями обходя по строкам
         for (int i = 0; (i < sheet.height()/charheight) && (charcount != 0); i++) {
             for (int j = 0; (j < sheet.widht()/charwidth) && (charcount != 0); j++) {
                 //Добовляем в список вырезаные спрайтшиты
