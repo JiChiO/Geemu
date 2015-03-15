@@ -10,7 +10,7 @@ public class Assets {
 
 
 
-    public static BufferedImage player, room, train;
+    public static BufferedImage player, room, train, grass, stone;
 
     public static void init(){
         //Присваиваем атрибуту player парядковый номер спрайтшита из списка
@@ -23,6 +23,12 @@ public class Assets {
 
         b = ArrayCrop("/textures/Train", "png");
         train = b[0];
+
+        b = ArrayCrop("/textures/Grass", "png");
+        grass = b[0];
+
+        b = ArrayCrop("/textures/Stone", "png");
+        stone = b[0];
     }
     //Рабивеам спрайты на массивы
     public static BufferedImage[] ArrayCrop(String s, String res){
