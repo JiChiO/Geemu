@@ -10,22 +10,31 @@ import java.util.Scanner;
 
 public class TextLoader {
 
-    public static String [] loadText(String path) {
-
+    public static String  loadText(String path) {
+        StringBuilder builder = new StringBuilder();
         try {
             List<String> list = new ArrayList<String>();
             URL classLoader = TextLoader.class.getResource(path);
             File file = new File(classLoader.getFile());
             Scanner in = new Scanner(file);
             while (in.hasNextLine())
-                list.add(in.nextLine());
-            String[] array = list.toArray(new String[0]);
-            return  array;
+
+                builder.append(in.nextLine() + " ");
+            return  builder.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
         }
      return null;
+    }
+
+    public static int parseInt(String number){
+        try{
+            return Integer.parseInt(number);
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

@@ -35,13 +35,14 @@ public class Assets {
         //Загружаем картинку в формате s=имя + res=расширение
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage(s + "." + res));
         //Загружаем размеры нарезки и общее кол-во спрайтов из текстового файла
-        String q[] = TextLoader.loadText(s + ".txt");
+        String[] q = TextLoader.loadText(s + ".txt").split("\\s+");
         //Создаем список спрайтов
         List<BufferedImage> list = new ArrayList<BufferedImage>();
         // Присваиваем по порядку ширину, длину и кол-во спрайтов из файла
         int charwidth = Integer.parseInt(q[0]);
         int charheight = Integer.parseInt(q[1]);
         int charcount = Integer.parseInt(q[2]);
+
         //Заполняем масив изображенями обходя по строкам
         for (int i = 0; (i < sheet.height()/charheight) && (charcount != 0); i++) {
             for (int j = 0; (j < sheet.widht()/charwidth) && (charcount != 0); j++) {
