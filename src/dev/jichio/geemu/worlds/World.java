@@ -1,5 +1,6 @@
 package dev.jichio.geemu.worlds;
 
+import dev.jichio.geemu.Game;
 import dev.jichio.geemu.text.TextLoader;
 import dev.jichio.geemu.tiles.Tile;
 
@@ -7,11 +8,13 @@ import java.awt.*;
 
 public class World {
 
+    private Game game;
     private int width, height;
     private int spawnX, spawnY;
     private int[][] tiles;
 
-    public World(String path){
+    public World(Game game, String path){
+        this.game = game;
         loadWorld(path);
     }
 
@@ -22,7 +25,8 @@ public class World {
     public void render(Graphics g){
         for (int y = 0;y < height;y++){
             for (int x = 0;x < width;x++){
-                getTile(x, y).render(g, x * Tile.TILEWIDTH, y * Tile.TILEHEIGHT);
+                getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - game.getGameCamera().getX0ffset()),
+                        (int) (y * Tile.TILEHEIGHT - game.getGameCamera().getY0ffset()));
             }
         }
     }

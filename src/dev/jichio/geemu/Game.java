@@ -2,6 +2,7 @@ package dev.jichio.geemu;
 
 import dev.jichio.geemu.display.Display;
 import dev.jichio.geemu.gfx.Assets;
+import dev.jichio.geemu.gfx.GameCamera;
 import dev.jichio.geemu.input.KeyManager;
 import dev.jichio.geemu.states.GameState;
 import dev.jichio.geemu.states.MenuState;
@@ -14,7 +15,7 @@ import java.awt.image.BufferStrategy;
 public class Game implements Runnable {
 
     private Display display;
-    public  int width, height;
+    private  int width, height;
     public String title;
 
     private boolean running = false;
@@ -30,6 +31,9 @@ public class Game implements Runnable {
     //Ввод
     private KeyManager keyManager;
 
+    //Камера
+    private GameCamera gameCamera;
+
 
     public Game(String title, int width, int height){
         this.width = width;
@@ -44,6 +48,9 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         Assets.init();
+
+        gameCamera = new GameCamera(this, 0,0);
+
         gameState = new GameState(this);
         menuState = new MenuState(this);
         State.setState(gameState);
@@ -118,6 +125,20 @@ public class Game implements Runnable {
     public KeyManager getKeyManager(){
         return keyManager;
     }
+
+    public GameCamera getGameCamera(){
+        return gameCamera;
+    }
+
+    public  int getWidth(){
+        return width;
+    }
+
+    public  int getHeight(){
+        return height;
+    }
+
+
 
     public synchronized void start(){
         if (running)

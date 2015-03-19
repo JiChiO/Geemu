@@ -1,5 +1,6 @@
 package dev.jichio.geemu.entities.creatures;
 
+import dev.jichio.geemu.Game;
 import dev.jichio.geemu.entities.Entity;
 
 public abstract class Creature extends Entity {
@@ -13,8 +14,8 @@ public abstract class Creature extends Entity {
     protected float speed;
     protected float xMove, yMove;
 
-    public Creature(float x, float y, int widht, int height) {
-        super(x, y, widht, height);
+    public Creature(Game game, float x, float y, int widht, int height) {
+        super(game, x, y, widht, height);
         health = DEFAULT_HEALTH;
         speed = DEFAULT_SPEED;
         xMove = 0;
