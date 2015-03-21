@@ -10,13 +10,25 @@ public class Assets {
 
 
 
-    public static BufferedImage player, room, train, grass, stone;
+    public static BufferedImage playerFront,playerFrontLF,playerFrontRF,playerBack,playerBackLF,playerBackRF, playerLeft,
+            playerLeftHF, playerLeftHB, playerRight, playerRightHB, playerRightHF,  room, train, grass, stone, yoba, empty;
 
     public static void init(){
         //Присваиваем атрибуту player парядковый номер спрайтшита из списка
         BufferedImage b [] = ArrayCrop("/textures/GGs", "png");
         //Присваиваем атрибуту player парядковый номер спрайтшита из списка
-        player = b[1];
+        playerFrontLF = b[0];
+        playerFront = b[1];
+        playerFrontRF = b[2];
+        playerBackLF = b[3];
+        playerBack = b[4];
+        playerBackRF = b[5];
+        playerLeftHF = b[6];
+        playerLeft = b[7];
+        playerLeftHB = b[8];
+        playerRightHB = b[9];
+        playerRight = b[10];
+        playerRightHF = b[11];
 
         b = ArrayCrop("/textures/MainRoom", "png");
         room = b[0];
@@ -29,6 +41,12 @@ public class Assets {
 
         b = ArrayCrop("/textures/Stone", "png");
         stone = b[0];
+
+        b = ArrayCrop("/textures/Yoba", "png");
+        yoba = b[0];
+
+        b = ArrayCrop("/textures/Empty", "png");
+        empty = b[0];
     }
     //Рабивеам спрайты на массивы
     public static BufferedImage[] ArrayCrop(String s, String res){

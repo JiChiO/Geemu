@@ -3,9 +3,9 @@ package dev.jichio.geemu.tiles;
 
 import dev.jichio.geemu.gfx.Assets;
 
-public class GrassTile extends Tile{
-    public GrassTile(int id) {
-        super(Assets.grass, id);
+public class EmptyTile extends Tile{
+    public EmptyTile (int id) {
+        super(Assets.empty, id);
     }
 
     @Override
@@ -13,5 +13,3 @@ public class GrassTile extends Tile{
         return true;
     }
 }
-
-
