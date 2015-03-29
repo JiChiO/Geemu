@@ -40,7 +40,7 @@ public class World {
 
     private void loadWorld(String path){
        String file = TextLoader.loadText(path);
-        System.out.print(path);
+        //System.out.print(path);
         String[] tokens = file.split("\\s+");
         width = TextLoader.parseInt(tokens[0]);
         height = TextLoader.parseInt(tokens[1]);

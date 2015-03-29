@@ -40,8 +40,6 @@ public class Game implements Runnable {
         this.height = height;
         this.title = title;
         keyManager = new KeyManager();
-
-
     }
 
     private void init(){
@@ -93,25 +91,26 @@ public class Game implements Runnable {
         init();
 
         int fps = 60;
-        double timePerTick = 1000000000 / fps;
-        double delta = 0;
+        long timePerTick = 1000000000 / fps;
         long now;
+        long next = 0;
         long lastTime = System.nanoTime();
         long timer = 0;
         int ticks = 0;
 
         while (running){
             now = System.nanoTime();
-            delta += (now - lastTime) / timePerTick;
             timer += now - lastTime;
             lastTime = now;
 
-            if (delta >= 1) {
+            if (now >= next) {
+                next = now + timePerTick;
                 tick();
                 render();
                 ticks++;
-                delta--;
+
             }
+
             if (timer >= 1000000000){
                 System.out.println("Tick and Frames: " + ticks);
                 ticks = 0;

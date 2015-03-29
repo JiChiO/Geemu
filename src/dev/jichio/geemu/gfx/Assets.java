@@ -11,7 +11,7 @@ public class Assets {
 
 
     public static BufferedImage playerFront,playerFrontLF,playerFrontRF,playerBack,playerBackLF,playerBackRF, playerLeft,
-            playerLeftHF, playerLeftHB, playerRight, playerRightHB, playerRightHF,  room, train, grass, stone, yoba, empty;
+            playerLeftHF, playerLeftHB, playerRight, playerRightHB, playerRightHF,  mainRoom, train, grass, stone, bed, BB;
 
     public static void init(){
         //Присваиваем атрибуту player парядковый номер спрайтшита из списка
@@ -31,7 +31,7 @@ public class Assets {
         playerRightHF = b[11];
 
         b = ArrayCrop("/textures/MainRoom", "png");
-        room = b[0];
+        mainRoom = b[0];
 
         b = ArrayCrop("/textures/Train", "png");
         train = b[0];
@@ -42,11 +42,11 @@ public class Assets {
         b = ArrayCrop("/textures/Stone", "png");
         stone = b[0];
 
-        b = ArrayCrop("/textures/Yoba", "png");
-        yoba = b[0];
+        b = ArrayCrop("/textures/Bed", "png");
+        bed = b[0];
 
-        b = ArrayCrop("/textures/Empty", "png");
-        empty = b[0];
+        b = ArrayCrop("/textures/BB", "png");
+        BB = b[0];
     }
     //Рабивеам спрайты на массивы
     public static BufferedImage[] ArrayCrop(String s, String res){

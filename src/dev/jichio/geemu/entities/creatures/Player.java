@@ -3,6 +3,7 @@ package dev.jichio.geemu.entities.creatures;
 import dev.jichio.geemu.Game;
 import dev.jichio.geemu.gfx.Assets;
 
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -23,11 +24,7 @@ public class Player extends Creature{
         game.getGameCamera().centerOnEnity(this);
     }
 
-    private void getInput(){
-        xMove = 0;
-        yMove = 0;
-        run = 0;
-
+    private boolean up(){
         if (game.getKeyManager().up || game.getKeyManager().up1) {
             run = 1;
             yMove = -speed;
@@ -49,8 +46,12 @@ public class Player extends Creature{
             }
             numFrame ++;
             if(numFrame == 4 * rate + 1){numFrame = 1;}
+            return true;
 
         }
+        return false;
+    }
+    private boolean down(){
         if (game.getKeyManager().down || game.getKeyManager().down1){
             run = 1;
             yMove = speed;
@@ -60,19 +61,23 @@ public class Player extends Creature{
             }
             if (numFrame == 1){
                 pureeru = Assets.playerFront;
-                }
+            }
             if (numFrame == rate) {
                 pureeru = Assets.playerFrontLF;
-                }
+            }
             if (numFrame == 2 * rate) {
                 pureeru = Assets.playerFront;
-                }
+            }
             if (numFrame == 3 * rate) {
                 pureeru = Assets.playerFrontRF;
-                }
+            }
             numFrame ++;
             if(numFrame == 4 * rate + 1){numFrame = 1;}
-            }
+            return true;
+        }
+        return false;
+    }
+    private boolean left(){
         if (game.getKeyManager().left || game.getKeyManager().left1){
             run = 1;
             xMove = -speed;
@@ -94,7 +99,11 @@ public class Player extends Creature{
             }
             numFrame ++;
             if(numFrame == 4 * rate + 1){numFrame = 1;}
-            }
+            return true;
+        }
+        return false;
+    }
+    private boolean right(){
         if (game.getKeyManager().right || game.getKeyManager().right1){
             run = 1;
             xMove = speed;
@@ -116,7 +125,34 @@ public class Player extends Creature{
             }
             numFrame ++;
             if(numFrame == 4 * rate + 1){numFrame = 1;}
-            }
+            return true;
+        }
+        return false;
+    }
+    private void getInput(){
+        xMove = 0;
+        yMove = 0;
+        run = 0;
+        if((direction == 1) && (!up())){
+            down();
+            left();
+            right();
+        }
+        if((direction == 2) && (!right())){
+            up();
+            left();
+            down();
+        }
+        if((direction == 3) && (!down())){
+            up();
+            left();
+            right();
+        }
+        if((direction == 4) && (!left())){
+            up();
+            down();
+            right();
+        }
         if(run == 0){
             if(direction == 1){pureeru = Assets.playerBack;}
             if(direction == 2){pureeru = Assets.playerRight;}
