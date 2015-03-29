@@ -19,6 +19,6 @@ public class Bed extends Entity {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.bed, (int) (x - game.getGameCamera().getX0ffset()), (int) (y- game.getGameCamera().getY0ffset()), width, height, null );
+        g.drawImage(Assets.bed, (int) (x - game.getGameCamera().getX0ffset()), (int) (y - game.getGameCamera().getY0ffset()), width, height, null );
     }
 }
