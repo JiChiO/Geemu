@@ -51,7 +51,9 @@ public class World {
         for (int y = 0;y < height;y++){
             for (int x = 0; x< width;x++){
                 tiles[x][y] = TextLoader.parseInt(tokens[(x + y * width) + 4]);
+                //System.out.print(tiles[x][y]);
             }
+           // System.out.println(" ");
         }
     }
 
